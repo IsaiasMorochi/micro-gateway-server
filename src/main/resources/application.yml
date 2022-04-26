@@ -6,6 +6,11 @@ spring:
           uri: lb://micro-productos
           predicates:
             - Path=/v1/productos/**
+            - Header=token, \d+
+            - Header=Content-Type, application/json
+            - Method=GET, POST
+            - Query=color, green
+            - Cookie=color, blue
           filters:
             - StripPrefix=2
             - ExampleCookie=Este es un mensaje personalizado para filter factory, usuario, IsaiasMorochi
@@ -18,7 +23,7 @@ spring:
             - AddResponseHeader=token-response, 12345678
             - SetResponseHeader=Content-Type, application/json;charset=UTF-8
             - AddRequestHeader=token-request, 123456
-            - AddRequestarameter=name, isaias
+            - AddRequestParameter=name, isaias
         - id: micro-usuarios
           uri: lb://micro-usuarios
           predicates:
