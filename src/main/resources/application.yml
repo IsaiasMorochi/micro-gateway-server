@@ -15,6 +15,10 @@ spring:
             - Path=/v1/items/**
           filters:
             - StripPrefix=2
+            - AddResponseHeader=token-response, 12345678
+            - SetResponseHeader=Content-Type, application/json;charset=UTF-8
+            - AddRequestHeader=token-request, 123456
+            - AddRequestarameter=name, isaias
         - id: micro-usuarios
           uri: lb://micro-usuarios
           predicates:
