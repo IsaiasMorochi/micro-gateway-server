@@ -34,14 +34,14 @@ public class ExampleGlobalFilter implements GlobalFilter, Ordered {
                 exchange.getResponse().getHeaders().add("token", valor);
             });
 
-            exchange.getResponse().getCookies().add("color", ResponseCookie.from("color", "black").build());
+            exchange.getResponse().getCookies().add("color", ResponseCookie.from("color", "red").build());
             //exchange.getResponse().getHeaders().setContentType(MediaType.TEXT_PLAIN);
         }));
     }
 
     @Override
     public int getOrder() {
-        return -1;
+        return 1;
     }
 
 }

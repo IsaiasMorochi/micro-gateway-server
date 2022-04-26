@@ -8,6 +8,11 @@ spring:
             - Path=/v1/productos/**
           filters:
             - StripPrefix=2
+            - name: Example
+              args:
+                message: Este es un mensaje personalizado para filter factory
+                cookieName: usuario
+                cookieValue: IsaiasMorochi
         - id: micro-items
           uri: lb://micro-items
           predicates:
