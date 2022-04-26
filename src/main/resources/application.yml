@@ -1,0 +1,28 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: micro-productos
+          uri: lb://micro-productos
+          predicates:
+            - Path=/v1/productos/**
+          filters:
+            - StripPrefix=2
+        - id: micro-items
+          uri: lb://micro-items
+          predicates:
+            - Path=/v1/items/**
+          filters:
+            - StripPrefix=2
+        - id: micro-usuarios
+          uri: lb://micro-usuarios
+          predicates:
+            - Path=/v1/usuarios/**
+          filters:
+            - StripPrefix=2
+        - id: micro-oauth
+          uri: lb://micro-oauth
+          predicates:
+            - Path=/v1/security/**
+          filters:
+            - StripPrefix=2
